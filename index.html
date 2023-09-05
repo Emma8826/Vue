@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Vue.js Website</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>   
+    <script src='https://unpkg.com/vue@3.0.2'></script>
+</head>
+<style>
+    .blue{
+        color:#0bd;
+    }
+
+    #red{
+        color:rgb(255, 0, 0);
+    }
+
+    .box{
+        padding:100px 0;
+        width: 400px;
+        text-align:center;
+        background-color:#ddd;
+        margin: 20px;
+        display: inline-block;
+    }
+</style>
+<body>
+
+    
+    <div id="app"> 
+
+        <div v-if = "showMovie">
+            <!--兩個大括號來標記要繫結資料的物件key值。-->
+            <p class="blue">{{title}}:{{ep}}</p>
+            <p id="red">{{time}}min</p>
+
+            <button v-on:click="time++">Increase</button>
+            <button v-on:click="time--">Decrease</button>
+            
+            <button @click="change('Star wars',120)">Update Book Name</button>
+    
+            <!-- v-on:click = @click-->
+            <button @click="toggleShowBook">
+                <span v-if="showMovie">Show Book</span>
+                <span v-else>Hide Book</span>
+            </button>
+        </div>
+
+
+        <div class="box" @mouseover="handleEvent">Mouse Over(Enter)</div>    
+        <div class="box" @mouseleave="handleEvent">Mouse Leave</div>  
+        <div class="box" @dbclick="handleEvent">Double click</div>  
+        <div class="box" @mouseover="handleEvent">Mouse Over(Enter)</div>  
+
+    </div>
+
+    <script src="app.js"></script>
+    <!--開發版本:有完整的警告訊息在console中顯示-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!--生產版本:針對文件的大小及速度都有做了優化。-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+</body>
+</html>
