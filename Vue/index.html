@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Vue.js Website</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='https://unpkg.com/vue@3.0.2'></script>
+</head>
+<body>
+    <div id="app">          
+        <div v-if = "showMovie">
+
+            <p>{{title}}:{{ep}}</p>
+            <p>{{time}}min</p>
+
+            <button v-on:click="time++">Increase</button>
+            <button v-on:click="time--">Decrease</button>
+
+            <button @click="change('Star wars',120)">Update Book Name</button>
+    
+        </div>
+        
+        <button @click="toggleShowBook">
+            <span v-if="showMovie">Show Book</span>
+            <span v-else>Hide Book</span>
+        </button>
+    </div>
+
+   
+    <script src="app.js"></script>
+</body>
+</html>
