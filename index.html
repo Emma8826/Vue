@@ -15,6 +15,15 @@
     #red{
         color:rgb(255, 0, 0);
     }
+
+    .box{
+        padding: 100px 0;
+        width: 400px;
+        text-align: center;
+        background-color:#ddd;
+        margin: 20px;
+        display: inline-block;
+    }
 </style>
 <body>
 
@@ -31,15 +40,18 @@
             
             <button @click="change('Star wars',120)">Update Book Name</button>
     
+            <!-- v-on:click = @click-->
+            <button @click="toggleShowBook">
+                <span v-if="showMovie">Show Book</span>
+                <span v-else>Hide Book</span>
+            </button>
         </div>
 
-        <!-- v-on:click = @click-->
-        <button @click="toggleShowBook">
-            <span v-if="showMovie">Show Book</span>
-            <span v-else>Hide Book</span>
-        </button>
-
-
+        <!--$event 幫我們想要指定特定的參數也想要event正常運行時-->
+        <div class="box" @mouseover="handleEvent($event,10)">mouseover</div> 
+        <div class="box" @mouseleave="handleEvent">mouseleave</div> 
+        <div class="box" @dblclick="handleEvent">dbclick</div> 
+        <div class="box" @mouseomover="handleMousemove">Position :{{x}},{{y}}</div> 
 
     </div>
 

@@ -6,7 +6,9 @@ const app =  Vue.createApp({
             showMovie : true,
             title:'The final empire',
             ep:'Session 1',
-            time:123
+            time:123,
+            x:0,
+            y:0
         }
     },
     methods:{
@@ -17,6 +19,16 @@ const app =  Vue.createApp({
         },
         toggleShowBook(){
             this.showMovie = !this.showMovie
+        },
+        handleEvent(e,data){
+            console.log(e,e.type)
+            if(data != null){
+                console.log(data)
+            }
+        },
+        handleMousemove(e){
+            this.x = e.offsetX
+            this.Y = e.offsetY
         }
     }
 })
