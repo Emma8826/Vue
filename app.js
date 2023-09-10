@@ -3,12 +3,18 @@ const app =  Vue.createApp({
     data(){
         //return data object
         return{
+            url: 'https://www.notion.so/Jenny-Lin-Note-d45c5182333943c0b7616a1972e31fb1',
             showMovie : true,
             title:'The final empire',
             ep:'Session 1',
             time:123,
-            x:0,
-            y:0
+            showBooks:true,
+            books:[
+                {title:'An apple',author:'A'},
+                {title:'Banana',author:'B'},
+                {title:'Cat',author:'C'}
+            ],
+            x:0,y:0,          
         }
     },
     methods:{

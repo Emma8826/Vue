@@ -30,6 +30,10 @@
 
     <div id="app"> 
 
+        <!--v-bind 對屬性動態綁定-->
+        <a v-bind:href="url">My Notion Page.</a>
+
+
         <div v-if = "showMovie">
             
             <p class="blue">{{title}}:{{ep}}</p>
@@ -47,11 +51,22 @@
             </button>
         </div>
 
+       
         <!--$event 幫我們想要指定特定的參數也想要event正常運行時-->
         <div class="box" @mouseover="handleEvent($event,10)">mouseover</div> 
         <div class="box" @mouseleave="handleEvent">mouseleave</div> 
         <div class="box" @dblclick="handleEvent">dbclick</div> 
         <div class="box" @mouseomover="handleMousemove">Position :{{x}},{{y}}</div> 
+
+         <!-- v-for loop = html自由定義的變數名稱 in js中宣告的陣列名稱-->
+         <div v-if = "showBooks">
+            <ul>                       
+              <li v-for = "book in books">
+                  <h3>{{book.title}}</h3>       
+                  <h3>{{book.author}}</h3>       
+              </li>
+            </ul>
+          </div>
 
     </div>
 
