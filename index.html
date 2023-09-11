@@ -30,21 +30,23 @@
 
     <div id="app"> 
 
-        <!--v-bind 對屬性動態綁定-->
+        <!--v-bind 對屬性動態綁定，也可以寫成:href-->
         <a v-bind:href="url">My Notion Page.</a>
 
 
         <div v-if = "showMovie">
             
-            <p class="blue">{{title}}:{{ep}}</p>
+            <p class="blue">{{ title }} : {{ ep }}</p>
             <p id="red">{{time}}min</p>
 
+            <!--v-on 監聽DOM事件-->
             <button v-on:click="time++">Increase</button>
             <button v-on:click="time--">Decrease</button>
             
+            <!--作為參數傳入-->
+            <!-- v-on:click = @click-->
             <button @click="change('Star wars',120)">Update Book Name</button>
     
-            <!-- v-on:click = @click-->
             <button @click="toggleShowBook">
                 <span v-if="showMovie">Show Book</span>
                 <span v-else>Hide Book</span>
@@ -61,12 +63,13 @@
          <!-- v-for loop = html自由定義的變數名稱 in js中宣告的陣列名稱-->
          <div v-if = "showBooks">
             <ul>                       
-              <li v-for = "book in books">
-                  <h3>{{book.title}}</h3>       
-                  <h3>{{book.author}}</h3>       
+              <li v-for = "book in books"> 
+                  <h3>{{book.title}}</h3>    
+                  <h3>{{book.picName}}</h3> 
+                  <img v-bind:src="book.img" width="700" height="500">  
               </li>
             </ul>
-          </div>
+        </div>
 
     </div>
 
