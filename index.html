@@ -8,72 +8,58 @@
     <script src='https://unpkg.com/vue@3.0.2'></script>
 </head>
 <style>
-    .blue{
-        color:#0bd;
+    body{
+        background:#eeeeee;
+        max-width:960px;
+        margin: 20px auto;
     }
-
-    #red{
-        color:rgb(255, 0, 0);
+    p,h3,ul{
+        margin: 0;
+        padding: 0;
     }
-
-    .box{
-        padding: 100px 0;
-        width: 400px;
-        text-align: center;
-        background-color:#ddd;
-        margin: 20px;
-        display: inline-block;
+    li{
+        list-style-position:none;
+        background:#ffffff;
+        margin: 20px auto;
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
     }
+    li.fav{
+        background:#da9b9b;
+    }
+    
 </style>
 <body>
 
-
     <div id="app"> 
-
-        <!--v-bind 對屬性動態綁定，也可以寫成:href-->
-        <a v-bind:href="url">My Notion Page.</a>
-
-
-        <div v-if = "showMovie">
-            
-            <p class="blue">{{ title }} : {{ ep }}</p>
-            <p id="red">{{time}}min</p>
-
-            <!--v-on 監聽DOM事件-->
-            <button v-on:click="time++">Increase</button>
-            <button v-on:click="time--">Decrease</button>
-            
-            <!--作為參數傳入-->
-            <!-- v-on:click = @click-->
-            <button @click="change('Star wars',120)">Update Book Name</button>
-    
-            <button @click="toggleShowBook">
-                <span v-if="showMovie">Show Book</span>
-                <span v-else>Hide Book</span>
-            </button>
-        </div>
-
-       
-        <!--$event 幫我們想要指定特定的參數也想要event正常運行時-->
-        <div class="box" @mouseover="handleEvent($event,10)">mouseover</div> 
-        <div class="box" @mouseleave="handleEvent">mouseleave</div> 
-        <div class="box" @dblclick="handleEvent">dbclick</div> 
-        <div class="box" @mouseomover="handleMousemove">Position :{{x}},{{y}}</div> 
 
          <!-- v-for loop = html自由定義的變數名稱 in js中宣告的陣列名稱-->
          <div v-if = "showBooks">
             <ul>                       
-              <li v-for = "book in books"> 
-                  <h3>{{book.title}}</h3>    
-                  <h3>{{book.picName}}</h3> 
-                  <img v-bind:src="book.img" width="700" height="500">  
+              <li v-for="book in Books" v-bind:class="{fav:book.isFav}"> 
+                <img v-bind:src="book.img" width="250" height="300">
+                    <h3>{{book.title}}</h3>  
+                    <h3>{{book.author}}</h3>
+                    <h3>${{book.price}}</h3>
+                    <button @Click="togglefav(book)">Select</button>                                 
               </li>
             </ul>
         </div>
 
+        <!-- v-on:click = @click-->
+        <button v-on:click="toggleShowBook">
+            <span v-if="showBooks">Hide Books</span>
+            <span v-else>Show Books</span>
+        </button> 
+
+        <h1>收藏數量:{{ favTotal }}  總金額 : ${{ priceTotal }}</h1>
+
     </div>
 
-   
+    
     <script src="app.js"></script>
 </body>
 </html>
